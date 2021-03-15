@@ -1,0 +1,20 @@
+# kara-an nga version pero simpler boilerplate
+# 
+version: '2'
+services:
+        db:
+          image: mysql
+          environment:
+            - MYSQL_ROOT_PASSWORD=secret
+            - MYSQL_DATABASE=db
+            - MYSQL_USER=db
+            - MYSQL_PASSWORD=secret
+          ports:
+            - "3306:3306"
+          volumes:
+            - "./docker/db/mount/:/var/lib/mysql:cached"
+        mailhog:
+          image: mailhog/mailhog
+          ports:
+            - "25:1025"
+            - "8025:8025"
